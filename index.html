@@ -1,451 +1,843 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Salah Eldin Emam — Head of Engineering - New</title>
+  <title>Salah Eldin Emam — Head of Engineering</title>
+  <meta name="description" content="Salah Eldin Emam — Head of Engineering. Software architect and engineering leader with 15+ years experience in .NET, Angular, cloud and team leadership." />
+  <meta name="keywords" content="Salah Eldin Emam, Head of Engineering, .NET, C#, Angular, CV, Resume" />
+  <link rel="canonical" href="https://yourdomain.example/" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Salah Eldin Emam — Head of Engineering" />
+  <meta property="og:description" content="Head of Engineering with 15+ years experience in .NET, Angular, cloud and team leadership." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Salah Eldin Emam" />
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;500&display=swap"
-    rel="stylesheet">
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Salah Eldin Emam",
+    "jobTitle":"Head of Engineering",
+    "url":"https://yourdomain.example/",
+    "sameAs":["https://www.linkedin.com/in/salah-emam","https://salahemam.github.io/"],
+    "email":"mailto:goldencap2009@gmail.com",
+    "description":"Head of Engineering with 15+ years experience, skilled in .NET, Angular, SQL Server, MongoDB, cloud and Agile leadership."
+  }
+  </script>
 
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Fonts (system fallback included) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+  /* ======= VARIABLES & THEME ======= */
+  :root{
+    --bg: #f6f9fc;
+    --panel: #ffffff;
+    --text: #0f1724;
+    --muted: #54607a;
+    --accent: #1652ff;
+    --accent-2: #00c2a8;
+    --glass: rgba(255,255,255,0.6);
+    --shadow: 0 10px 30px rgba(16,24,40,0.06);
+    --radius: 14px;
+    --container: 1100px;
+    --gap: 24px;
+    --nav-height: 72px;
+  }
+  body.dark{
+    --bg: #0b1220;
+    --panel: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    --text: #e8f0ff;
+    --muted: #9aa7bf;
+    --accent: #3f8cff;
+    --accent-2: #00d1b2;
+    --glass: rgba(255,255,255,0.02);
+    --shadow: 0 12px 36px rgba(2,6,23,0.6);
+  }
+
+  /* ======= BASE ======= */
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: radial-gradient(1200px 500px at 10% 10%, rgba(63,140,255,0.05), transparent),
+                linear-gradient(180deg,var(--bg), rgba(255,255,255,0.02));
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.5;
+    transition: background .36s ease, color .36s ease;
+    padding-top: var(--nav-height);
+  }
+  a{color:inherit}
+  .container{max-width:var(--container);margin:0 auto;padding:0 20px}
+
+  /* ======= NAV ======= */
+  header.site-header{
+    height:var(--nav-height);
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    backdrop-filter: blur(6px);
+    background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+    box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+    display:flex;
+    align-items:center;
+    z-index:80;
+    transition:background .3s ease, box-shadow .3s ease;
+  }
+  body.dark header.site-header{
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    box-shadow: 0 6px 24px rgba(0,0,0,0.6);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{
+    width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:flex;align-items:center;justify-content:center;color:white;font-weight:700;letter-spacing:0.6px;
+    box-shadow:var(--shadow)
+  }
+  .brand-title{font-weight:700;font-size:15px}
+  nav.main-nav{display:flex;gap:12px;align-items:center}
+  nav.main-nav a{
+    text-decoration:none;padding:10px 12px;border-radius:8px;color:var(--muted);font-weight:600;font-size:14px;
+  }
+  nav.main-nav a.active{color:var(--accent);background:rgba(63,140,255,0.06)}
+  .nav-actions{display:flex;gap:8px;align-items:center}
+
+  /* Hamburger */
+  .hamburger{display:none;width:44px;height:44px;border-radius:10px;background:transparent;border:1px solid rgba(0,0,0,0.04);display:flex;align-items:center;justify-content:center;cursor:pointer}
+  .hamburger svg{width:20px;height:20px}
+  .mobile-drawer{
+    position:fixed;top:var(--nav-height);left:0;right:0;background:var(--panel);padding:14px;border-bottom-left-radius:12px;border-bottom-right-radius:12px;box-shadow:var(--shadow);display:none;flex-direction:column;gap:6px;z-index:79
+  }
+
+  /* ======= HERO (centered) ======= */
+  .hero{
+    padding:80px 0 40px;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+  }
+  .hero-card{
+    width:100%;
+    max-width:920px;
+    background:var(--panel);
+    border-radius:18px;
+    padding:44px;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-title{font-size:34px;margin:0 0 12px;font-weight:800;letter-spacing:-0.6px}
+  .hero-sub{font-size:18px;color:var(--muted);margin-bottom:18px}
+  .hero-desc{font-size:15px;color:var(--muted);max-width:760px;margin:0 auto 20px}
+  .cta-row{display:flex;gap:12px;justify-content:center;margin-top:18px}
+  .btn{
+    padding:10px 16px;border-radius:10px;font-weight:700;border:none;cursor:pointer;display:inline-flex;gap:10px;align-items:center;text-decoration:none
+  }
+  .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;box-shadow: 0 8px 28px rgba(63,140,255,0.18)}
+  .btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);color:var(--text)}
+
+  /* ======= SECTIONS ======= */
+  section.site-section{padding:56px 0}
+  .section-head{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;margin-bottom:26px}
+  .section-title{font-size:20px;font-weight:700}
+  .section-sub{color:var(--muted);font-weight:600;font-size:13px}
+
+  /* ======= PROJECTS GRID ======= */
+  .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .project-card{background:var(--panel);border-radius:12px;padding:18px;box-shadow:var(--shadow);min-height:120px;transition:transform .28s ease}
+  .project-card:hover{transform:translateY(-6px)}
+  .project-title{font-weight:700;margin:0 0 8px}
+  .project-stack{font-size:13px;color:var(--muted)}
+
+  /* ======= CV (Accordion) ======= */
+  .cv-wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+  .accordion{background:var(--panel);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+  .accordion .item{border-bottom:1px solid rgba(0,0,0,0.04)}
+  .acc-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;cursor:pointer}
+  .acc-head h4{margin:0;font-size:16px}
+  .acc-body{padding:0 18px 18px;max-height:0;overflow:hidden;transition:max-height .36s ease,padding .36s ease}
+  .acc-body.open{padding:18px}
+  .text-muted{color:var(--muted);font-size:14px}
+
+  /* ======= CONTACT ======= */
+  .contact-grid{display:grid;grid-template-columns:1fr 420px;gap:20px;align-items:start}
+  .contact-card{background:var(--panel);padding:18px;border-radius:12px;box-shadow:var(--shadow)}
+  .contact-form label{display:block;margin-bottom:8px;font-weight:600}
+  .contact-form input,.contact-form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);background:transparent;color:var(--text);margin-bottom:12px}
+
+  /* ======= FOOTER ======= */
+  footer.site-footer{padding:30px 0;color:var(--muted);text-align:center}
+
+  /* ======= ANIMATIONS (slide-up on scroll) ======= */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.visible{opacity:1;transform:none}
+
+  /* ======= RESPONSIVE ======= */
+  @media (max-width:980px){
+    .projects-grid{grid-template-columns:repeat(2,1fr)}
+    .contact-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:760px){
+    .projects-grid{grid-template-columns:1fr}
+    nav.main-nav{display:none}
+    .hamburger{display:inline-flex}
+    .hero-card{padding:28px}
+    .brand-title{display:none}
+    .nav-actions{gap:6px}
+  }
+
+  </style>
 </head>
-
 <body>
-  <nav class="navbar" id="navbar">
-    <div class="nav-inner">
-      <div class="brand">
-        <div class="logo">SE</div>
-        <div class="name-title">
-          <div class="name">Salah Eldin Emam</div>
-          <div class="title">Head of Engineering</div>
-        </div>
+  <!-- NAV -->
+  <header class="site-header" role="banner">
+    <div class="container nav-inner">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="logo" aria-hidden="true">SE</div>
+        <div class="brand-title">Salah Eldin Emam</div>
       </div>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#courses">Courses</a></li>
-        <li><a href="#personal">Personal</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+
+      <nav class="main-nav" aria-label="Primary">
+        <a href="#home" data-target="home" class="nav-link active">Home</a>
+        <a href="#resume" data-target="resume" class="nav-link">Resume</a>
+        <a href="#projects" data-target="projects" class="nav-link">Projects</a>
+        <a href="#contact" data-target="contact" class="nav-link">Contact</a>
+      </nav>
+
       <div class="nav-actions">
-        <button id="printBtn" class="btn primary">Print / PDF</button>
-        <button id="menuToggle" class="btn ghost">☰</button>
+        <button id="themeToggle" title="Toggle theme" aria-pressed="false" class="hamburger" style="width:44px;height:44px">
+          <!-- moon / sun icon swap via JS -->
+          <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="20" height="20"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" /></svg>
+        </button>
+
+        <button class="hamburger" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
       </div>
     </div>
-  </nav>
 
-  <main class="container">
+    <!-- Mobile drawer -->
+    <div id="mobileDrawer" class="mobile-drawer" aria-hidden="true">
+      <a href="#home" data-target="home" class="nav-link">Home</a>
+      <a href="#resume" data-target="resume" class="nav-link">Resume</a>
+      <a href="#projects" data-target="projects" class="nav-link">Projects</a>
+      <a href="#contact" data-target="contact" class="nav-link">Contact</a>
+    </div>
+  </header>
 
-    <!-- ABOUT -->
-    <section id="about" class="card">
-      <h2>Summary</h2>
-      <p class="dense">
-        Seasoned software engineer with 15+ years of experience, including 5+ years as a team lead and 2 years as Head
-        of Engineering. Skilled in .NET, .NET Core, ASP.NET, C#, SQL Server, MongoDB, Angular, and modern front-end
-        frameworks. Experienced with JIRA, Slack, Zeplin, Visual Studio, VS Code, GitHub, Azure DevOps, and Zoom.
-        Skilled in managing the complete software development life cycle—from requirements gathering and design through
-        deployment and ongoing support. Strong background in Agile, Scrum, and Waterfall, with a proven track record in
-        leading teams, mentoring developers, and delivering scalable, high-quality web and desktop solutions.
-      </p>
+  <main>
+    <!-- HOME (centered hero) -->
+    <section id="home" class="site-section hero reveal" aria-labelledby="homeTitle" data-section>
+      <div class="container">
+        <div class="hero-card">
+          <h1 class="hero-title" id="homeTitle">Hi, I’m <span style="background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;color:transparent">Salah Eldin Emam</span></h1>
+          <p class="hero-sub">Head of Engineering · Software Architect · Technical Leader</p>
+          <p class="hero-desc">I lead engineering teams to deliver scalable, secure, and maintainable software. I specialize in modern .NET backend systems, Angular frontends, cloud-native deployments, and building high-performing engineering practices.</p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#resume" data-target="resume">View Resume</a>
+            <a class="btn btn-ghost" href="#contact" data-target="contact">Get in touch</a>
+          </div>
+
+          <div style="display:flex;gap:12px;justify-content:center;margin-top:22px;color:var(--muted);font-weight:700;">
+            <div style="text-align:center">
+              <div style="font-size:18px">15+</div>
+              <div style="font-size:12px;color:var(--muted)">Years Experience</div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-size:18px">5+</div>
+              <div style="font-size:12px;color:var(--muted)">Years Leading Teams</div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-size:18px">30+</div>
+              <div style="font-size:12px;color:var(--muted)">Enterprise Projects</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="card">
-      <h2>WORK EXPERIENCES</h2>
+    <!-- RESUME (accordion) -->
+    <section id="resume" class="site-section reveal" aria-labelledby="resumeTitle" data-section hidden>
+      <div class="container">
+        <div class="section-head">
+          <div class="section-title" id="resumeTitle">Resume / CV</div>
+          <div class="section-sub">Full professional CV (accordion). Click headings to expand.</div>
+        </div>
 
-      <div class="item">
-        <h4>Head of Engineering</h4>
-        <div class="meta">Qorrect | Jan-2024 to Present</div>
-        <p class="dense">Head of Engineering with proven experience leading cross-functional teams (frontend, backend,
-          mobile, and QA) to deliver high-quality products in agile environments. Skilled in managing feature delivery,
-          deployment, and DevOps processes while ensuring product stability and performance. Experienced in stakeholder
-          communication, client meetings, and team hiring/onboarding. also managing tools such as JIRA, Azure DevOps,
-          and GitHub. Adept at fostering collaboration, reviewing code, and guiding teams to meet organizational
-          objectives efficiently.</p>
-      </div>
+        <div class="cv-wrap">
+          <!-- NOTE: CV contents verbatim from the uploaded PDF document. Citation: -->
+          <!-- Source: uploaded document. --> 
+          <!-- CV contents below are taken verbatim from the attached file. 1 -->
 
-      <div class="item">
-        <h4>Software Team Leader (.Net)</h4>
-        <div class="meta">Qorrect | MAR-2021 to Dec-2023</div>
-        <p class="dense">Lead the development team (backend & frontend) in an agile environment to work on the company
-          product features (Qorrect Assessment Platform).My activities includes leadership, development, interview,
-          refactoring, code reviews, research for best solutions, architecture & design, also act as Scrum Master.</p>
-      </div>
+          <!-- SUMMARY -->
+          <div class="accordion accordion-summary reveal">
+            <div class="item">
+              <div class="acc-head" data-acc>
+                <h4>SUMMARY</h4>
+                <div class="text-muted">Seasoned profile overview</div>
+              </div>
+              <div class="acc-body">
+                <p>Seasoned software engineer with 15+ years of experience, including 5+ years as a team lead and 2 years as Head of Engineering.</p>
 
-      <div class="item">
-        <h4>Technical Lead (.Net)</h4>
-        <div class="meta">Key2Soft | Jan-2020 to MAR-2021</div>
-        <p class="dense">Delivered educational projects to Saudi clients like TETCO software company and Ministry of
-          Education</p>
-      </div>
+                <p>Skilled in .NET, .NET Core, ASP.NET, C#, SQL Server, MongoDB, Angular, and modern front-end frameworks. Experienced with JIRA,
+                Slack, Zeplin, Visual Studio, VS Code, GitHub, Azure DevOps, and Zoom. Skilled in managing the complete software development
+                life cycle—from requirements gathering and design through deployment and ongoing support. Strong background in Agile, Scrum,
+                and Waterfall, with a proven track record in leading teams, mentoring developers, and delivering scalable, high-quality web and
+                desktop solutions.</p>
+              </div>
+            </div>
+          </div>
 
-      <div class="item">
-        <h4>Senior Software Engineer (.Net)</h4>
-        <div class="meta">Path Solutions | Nov-2018 to Dec-2019</div>
-        <p class="dense">Work on large banking system 'iSHRAQ' with banking clients like 'Gulf Bank' and also build web
-          services for integration.</p>
-      </div>
+          <!-- WORK EXPERIENCES -->
+          <div class="accordion reveal">
+            <div class="item">
+              <div class="acc-head" data-acc>
+                <h4>WORK EXPERIENCES</h4>
+                <div class="text-muted">Full employment history</div>
+              </div>
+              <div class="acc-body">
+                <h3>Head of Engineering</h3>
+                <div class="text-muted">Qorrect | Jan-2024 to Present</div>
+                <p>Head of Engineering with proven experience leading cross-functional teams (frontend, backend, mobile, and QA) to deliver high-
+                quality products in agile environments. Skilled in managing feature delivery, deployment, and DevOps processes while ensuring
+                product stability and performance. Experienced in stakeholder communication, client meetings, and team hiring/onboarding. also
+                managing tools such as JIRA, Azure DevOps, and GitHub. Adept at fostering collaboration, reviewing code, and guiding teams to
+                meet organizational objectives efficiently.</p>
 
-      <div class="item">
-        <h4>Technical Team Lead (.Net)</h4>
-        <div class="meta">Integrated Technology Group | Aug-2018 to Nov-2018</div>
-        <p class="dense">Lead the development team to achieve tasks for large e-learning solution 'EduWave' and also
-          build solutions from scratch using WebApis, Authentication, SignalR & WebSockets.</p>
-      </div>
+                <h3>Software Team Leader (.Net)</h3>
+                <div class="text-muted">Qorrect | MAR-2021 to Dec-2023</div>
+                <p>Lead the development team (backend & frontend) in an agile environment to work on the company product features (Qorrect
+                Assessment Platform).My activities includes leadership, development, interview, refactoring, code reviews, research for best
+                solutions, architecture & design, also act as Scrum Master.</p>
 
-      <div class="item">
-        <h4>.Net Team Leader</h4>
-        <div class="meta">CodeLab | May-2015 to July-2018</div>
-        <p class="dense">Lead the development team to work on Dynamic Inspection System using angular & WebApis, and
-          also was responsible for code review &deployments delivered to multiple different clients in Saudi Arabia</p>
-      </div>
+                <h3>Technical Lead (.Net)</h3>
+                <div class="text-muted">Key2Soft | Jan-2020 to MAR-2021</div>
+                <p>Delivered educational projects to Saudi clients like TETCO software company and Ministry of Education</p>
 
-      <div class="item">
-        <h4>Senior .Net Web Developer</h4>
-        <div class="meta">Vodafone International Services | Jul-2014 to Apr-2015</div>
-        <p class="dense">Worked on the official website for Ceramica Royal using Orchard CMS application built on
-          ASP.Net MVC</p>
-      </div>
+                <h3>Senior Software Engineer (.Net)</h3>
+                <div class="text-muted">Path Solutions | Nov-2018 to Dec-2019</div>
+                <p>Work on large banking system 'iSHRAQ' with banking clients like 'Gulf Bank' and also build web services for integration.</p>
 
-      <div class="item">
-        <h4>Senior .Net Web Developer</h4>
-        <div class="meta">Advanced Computer Systems | Jan-2013 to July-2014</div>
-        <p class="dense">Developed different web & desktop projects using C#.Net, VB.Net, ASP.Net, SqlServer, Crystal
-          Reports.</p>
-      </div>
+                <h3>Technical Team Lead (.Net)</h3>
+                <div class="text-muted">Integrated Technology Group | Aug-2018 to Nov-2018</div>
+                <p>Lead the development team to achieve tasks for large e-learning solution 'EduWave' and also build solutions from scratch using
+                WebApis, Authentication, SignalR & WebSockets.</p>
 
-      <div class="item">
-        <h4>Junior .Net Web Developer</h4>
-        <div class="meta">Advanced Computer Systems | Mar-2010 to Jan-2013</div>
-        <p class="dense">Developed different web & desktop projects using C#.Net, VB.Net, ASP.Net, SqlServer, Crystal
-          Reports.</p>
+                <h3>.Net Team Leader</h3>
+                <div class="text-muted">CodeLab | May-2015 to July-2018</div>
+                <p>Lead the development team to work on Dynamic Inspection System using angular & WebApis, and also was responsible for code
+                review &deployments delivered to multiple different clients in Saudi Arabia</p>
+
+                <h3>Senior .Net Web Developer</h3>
+                <div class="text-muted">Vodafone International Services | Jul-2014 to Apr-2015</div>
+                <p>Worked on the official website for Ceramica Royal using Orchard CMS application built on ASP.Net MVC</p>
+
+                <h3>Senior .Net Web Developer</h3>
+                <div class="text-muted">Advanced Computer Systems | Jan-2013 to July-2014</div>
+                <p>Developed different web & desktop projects using C#.Net, VB.Net, ASP.Net, SqlServer, Crystal Reports.</p>
+
+                <h3>Junior .Net Web Developer</h3>
+                <div class="text-muted">Advanced Computer Systems | Mar-2010 to Jan-2013</div>
+                <p>Developed different web & desktop projects using C#.Net, VB.Net, ASP.Net, SqlServer, Crystal Reports.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECTS -->
+          <div class="accordion reveal">
+            <div class="item">
+              <div class="acc-head" data-acc>
+                <h4>PROJECTS</h4>
+                <div class="text-muted">Complete projects list & descriptions</div>
+              </div>
+              <div class="acc-body">
+                <p><strong>Qorrect Assessment</strong><br>
+                C#, .Net Core, ASP.Net WebApis, ASP.Net MVC, SqlServer, Postgres, Redis, IdentityServer4, Hangfire</p>
+                <p>Smart assessment product which manages examinations for both examiners & examinees, delivered online or on papers using
+                web, tablet, and mobile devices. It allows examiners to create and assign exams with different questions & layouts for their
+                examinees.</p>
+
+                <p><strong>Marking System</strong><br>
+                C#, .Net Core, ASP.Net WebApis, SqlServer, Postgres, Redis, JWT</p>
+                <p>A product to facilitae the examinees answers marking in an easy and collaborative way while the marking tasks are assigned
+                randomly or manually to the markers.</p>
+
+                <p><strong>Key2Learn</strong><br>
+                C#.Net, ASP.Net MVC Core, MongoDB</p>
+                <p>Learning management system (LMS) which manages schools, teachers, students, and parents. It allows teachers to create and
+                assign couses, meeting, and materials for their students.</p>
+
+                <p><strong>Future Leaders</strong><br>
+                C#.Net, ASP.Net MVC, WCF Services, Sql Server</p>
+                <p>Educational web application which allows the ministry to choose the most talented graduates or teachers to fullll the available
+                leadership positions</p>
+
+                <p><strong>Waed</strong><br>
+                C#.Net, ASP.Net MVC Core, WCF Services, Sql Server</p>
+                <p>Educational web application which allows filtering the ministry employees by passing some exams and surveys and also making
+                interviews and trainings based on their skills</p>
+
+                <p><strong>Safeer Graduates</strong><br>
+                C#.Net, ASP.Net MVC, WCF Services, Sql Server</p>
+                <p>Educational web application that integrates with many WCF services which allows the graduates to publish their CVs and apply for
+                jobs or trainings offered by other registered agencies.</p>
+
+                <p><strong>Online Banking Webservices</strong><br>
+                C#.Net, ASP.Net WebApis, Oracle</p>
+                <p>Build webservices for integration with internal bank system & exposed to external customers portal</p>
+
+                <p><strong>iSHRAQ</strong><br>
+                C#.Net, ASP.Net WebForms, Oracle</p>
+                <p>Banking software product for internal & external bank activities management & core banking.</p>
+
+                <p><strong>EduWave</strong><br>
+                C#.Net, Asp.Net WebApis Asp.Net WebForms, Sql Server</p>
+                <p>Large e-learning system for all study levels which helps students and teachers communication & cover many schools in the Gulf</p>
+
+                <p><strong>GAZT</strong><br>
+                C#.Net, Asp.Net WebApis, Sql Server, Angular 1.x, Active Directory, SAP, CRM.</p>
+                <p>Inspection for agencies that have not paid their VAT or Excise Taxes to detect violations and set penalities on their owners & 
+                integrate with active directory and other external services (SAP, CRM).</p>
+
+                <p><strong>MOT</strong><br>
+                C#.Net, Asp.Net WebApis, Sql Server, Angular 1.x</p>
+                <p>Tracking and reporting accidents or violations in roads.</p>
+
+                <p><strong>Onaizah Municipality</strong><br>
+                C#.Net, Asp.Net WebApis, Sql Server, Oracle, Angular 1.x Active Directory.</p>
+                <p>Inspection for all shops in Onaizah to check violations and set penalities on their owners & sync with oracle db & integrate with
+                active directory.</p>
+
+                <p><strong>MLSD</strong><br>
+                C#.Net, Asp.Net WebApis, Sql Server, Oracle, SSIS, Angular 1.x.</p>
+                <p>Inspection for poor people who need help or money & sync with ministry oracle db.</p>
+
+                <p><strong>GAMEP</strong><br>
+                C#.Net, Asp.Net WebApis, Sql Server, Angular 1.x..</p>
+                <p>Inspection for buildings, factories, or agencies which have environmental violations & go through approval & revision workow</p>
+
+                <p><strong>MOF</strong><br>
+                C#.Net, Asp.Net WebApis, Sql Server, Angular 1.x</p>
+                <p>Provides news related to the ministry & integrate with mobile app.</p>
+
+                <p><strong>BRAVO Product</strong><br>
+                C#.Net, Asp.Net WebApis, Sql Server, Angular 1.x</p>
+                <p>Generic field inspection product with dynamic form builder, form viewer (web & mobile), workow, and task distribution.</p>
+
+                <p><strong>http://www.royalceramica.com</strong><br>
+                C#.Net, Asp.Net MVC, Sql Server, Orchard CMS</p>
+                <p>Ceramica Royal company ofcial website.</p>
+
+                <p><strong>http://www.egysurvey.com</strong><br>
+                C#.Net, ASP.Net Webforms, Sql Server</p>
+                <p>Design simple & professional surveys with different templates.</p>
+
+                <p><strong>http://www.rakeeb.net</strong><br>
+                C#.Net, ASP.Net Webforms, Sql Server, Charts, Windows Services</p>
+                <p>Egypt Elections Supervision, News, Results, Statistics and Maps.</p>
+
+                <p><strong>http://www.emta7anat.com</strong><br>
+                C#.Net, ASP.Net Webforms, Sql Server</p>
+                <p>Exams online for students, teachers, and schools.</p>
+
+                <p><strong>http://www.reservegypt.com</strong><br>
+                C#.Net, ASP.Net Webforms, Sql Server</p>
+                <p>Hotels Reservation system for Egypt and other services.</p>
+
+                <p><strong>http://www.eiod.org</strong><br>
+                C#.Net, ASP.Net Webforms, Sql Server</p>
+                <p>Egyptian Institute of Directors.</p>
+
+                <p><strong>http://www.ecrc.org.eg</strong><br>
+                C#.Net, ASP.Net Webforms, Sql Server</p>
+                <p>Egyptian Corporate Responsibility Center.</p>
+
+                <p><strong>http://www.followmycars.com</strong><br>
+                C#.Net, ASP.Net Webforms</p>
+                <p>Marketing website for tracking cars through GPS tools.</p>
+
+                <p><strong>http://www.acs-egypt.com</strong><br>
+                C#.Net, ASP.Net Webforms, Sql Server</p>
+                <p>Management system for ACS Company.</p>
+
+                <p><strong>Gait Analysis for Human Identication</strong><br>
+                C#.Net, OpenCV, Sql Server</p>
+                <p>Graduation Project which aims to identify the individuals by their gait (i.e. the manner they walk) from a video sequence. Won ITIDA
+                prize</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- TECHNICAL SKILLS -->
+          <div class="accordion reveal">
+            <div class="item">
+              <div class="acc-head" data-acc>
+                <h4>TECHNICAL SKILLS</h4>
+                <div class="text-muted">Core technologies & tools</div>
+              </div>
+              <div class="acc-body">
+                <p>C#.Net | VB.Net | ASP.Net (WebForms, MVC, WebApis) | ASP.Net MVC Core | .Net Core | Entity Framework | EF Core | Design
+                Patterns | OOP | SOLID Principles | IdentityServer | Hangfire | Redis | AngularJS | Angular 2+ | KnockoutJs | HTML | CSS | Bootstrap |
+                JavaScript | jQuery | AJAX | JSON | XML | WCF | MongoDB (Query, Aggregation, Performance) | SQL Server | SSIS | Oracle | MS
+                Access | Postgres | Crystal Reports | iReport | SSRS | Cloud (Amazon, Azure) | Git | TFVS | JIRA | Agile | Scrum | SignalR |
+                WebSockets | Basics in (SharePoint, Orchard CMS, Ionic Framework, Android, WordPress, Joomla, C++, JAVA, Win 8 Apps).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- EDUCATION -->
+          <div class="accordion reveal">
+            <div class="item">
+              <div class="acc-head" data-acc>
+                <h4>EDUCATION</h4>
+                <div class="text-muted">Academic background</div>
+              </div>
+              <div class="acc-body">
+                <p>Faculty of Computer & Information Sciences - Ainshams University<br>2005 - 2009</p>
+
+                <p>Thanawia Amma - Mubarak Secondary<br>2002 - 2005</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- COURSES -->
+          <div class="accordion reveal">
+            <div class="item">
+              <div class="acc-head" data-acc>
+                <h4>COURSES</h4>
+                <div class="text-muted">Professional development</div>
+              </div>
+              <div class="acc-body">
+                <p>Project Management - PMP Preparation | net3lem.com</p>
+                <p>Agile Frameworks Webinar | net3lem.com</p>
+                <p>EF Core 6 Fundamentals | Pluralsight</p>
+                <p>Microservices Architecture in Arabic | Youtube</p>
+                <p>Microservices Architecture and Design | Youtube</p>
+                <p>Saga pattern: distributed transactions | Youtube</p>
+                <p>Introduction to Microservices - DotnetMastery | Youtube</p>
+                <p>SOLID Principles for C# Developers | Pluralsight</p>
+                <p>Top 1%: Software Architecture Series | Pluralsight</p>
+                <p>Youtube | سلسلة سكروم باللغة العربية</p>
+                <p>[Arabic - بالعربي] Entity Framework Core | Youtube</p>
+                <p>Microservices: The Big Picture | Pluralsight</p>
+                <p>ASP.NET Core Microservices: Getting Started | Pluralsight</p>
+                <p>Simplified .Net Background Tasks with Hangfire 1 | Pluralsight</p>
+                <p>Clean Architecture: Patterns, Practices, and Principles | Pluralsight</p>
+                <p>Get Started With .Net Core Identity Server 4 | Udemy</p>
+                <p>Learn Amazon web services (AWS): The complete introduction | Udemy</p>
+                <p>MongoDB Basics | MongoDB University</p>
+                <p>MongoDB Aggregation Framework | MongoDB University</p>
+                <p>MongoDB Performance | MongoDB University</p>
+                <p>MongoDB for Python Developers | MongoDB University</p>
+                <p>Angular 9 - The Complete Guide 2020 Edition | Udemy</p>
+                <p>Leadership Skills | E3melBusiness Academy</p>
+                <p>Professional CEO | E3melBusiness Academy</p>
+                <p>Modern Software Architecture | SECC-ITIDA</p>
+                <p>SECC Agile Foundation | SECC-ITIDA</p>
+                <p>Mastering the Basics of SQL Server Query Optimization | Udemy</p>
+                <p>Mini MBA | Smart Vision</p>
+                <p>Developing Microsoft SharePoint Server 2013 Core Solutions | New Horizons</p>
+                <p>Android Application Development | Asgatech</p>
+                <p>Cloud Business Essentials | ITSynergy</p>
+                <p>Code Refactoring Techniques | SECC-ITIDA</p>
+                <p>Test Driven Development | SECC-ITIDA</p>
+                <p>Berlitz Prociency Level 1 (English Course) | Berlitz</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CERTIFICATES -->
+          <div class="accordion reveal">
+            <div class="item">
+              <div class="acc-head" data-acc>
+                <h4>CERTIFICATES</h4>
+                <div class="text-muted">Official certificates</div>
+              </div>
+              <div class="acc-body">
+                <p>SECC Agile Foundation — SECC | May 2018</p>
+                <p>CCC Cloud Business Associate — TIEC | February 2014</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- PERSONAL SKILLS -->
+          <div class="accordion reveal">
+            <div class="item">
+              <div class="acc-head" data-acc>
+                <h4>PERSONAL SKILLS</h4>
+                <div class="text-muted">Soft skills</div>
+              </div>
+              <div class="acc-body">
+                <p>Great Leader & Manager</p>
+                <p>Committed</p>
+                <p>Analytical</p>
+                <p>Love Thinking</p>
+                <p>Cooperative</p>
+                <p>Hard Worker</p>
+                <p>Well Organized</p>
+                <p>Team Player</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- PERSONAL INFORMATION -->
+          <div class="accordion reveal">
+            <div class="item">
+              <div class="acc-head" data-acc>
+                <h4>PERSONAL INFORMATION</h4>
+                <div class="text-muted">Contact & personal details</div>
+              </div>
+              <div class="acc-body">
+                <p>Address: Cairo, Egypt</p>
+                <p>Marital Status: Married</p>
+                <p>Military Status: Excempted</p>
+                <p>Languages: Arabic (Native) | English (Excellent)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONTACT -->
+          <div class="accordion reveal">
+            <div class="item">
+              <div class="acc-head" data-acc>
+                <h4>CONTACT</h4>
+                <div class="text-muted">How to reach me</div>
+              </div>
+              <div class="acc-body">
+                <p>I'm always open to new opportunities, collaborations, or conversations about technology, leadership, and innovation.
+                You can easily reach me through any of the following:</p>
+
+                <p>Email goldencap2009@gmail.com</p>
+                <p>LinkedIn linkedin.com/in/salah-emam</p>
+                <p>GitHub salahemam.github.io</p>
+
+                <div style="margin-top:12px;color:var(--muted);font-size:13px">
+                  © 2025 Salah Eldin Emam — All rights reserved<br>
+                  Last updated at 13-10-2025
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="card">
-      <h2>PROJECTS</h2>
+    <section id="projects" class="site-section reveal" aria-labelledby="projectsTitle" data-section hidden>
+      <div class="container">
+        <div class="section-head">
+          <div class="section-title" id="projectsTitle">Selected Projects</div>
+          <div class="section-sub">A handful of featured deliveries and systems</div>
+        </div>
 
-      <div class="item">
-        <h4>Qorrect Assessment</h4>
-        <div class="meta">C#, .Net Core, ASP.Net WebApis, ASP.Net MVC, SqlServer, Postgres, Redis, IdentityServer4,
-          Hangfire</div>
-        <p class="dense">Smart assessment product which manages examinations for both examiners & examinees, delivered
-          online or on papers using web, tablet, and mobile devices. It allows examiners to create and assign exams with
-          different questions & layouts for their examinees.</p>
+        <div class="projects-grid">
+          <div class="project-card reveal">
+            <div class="project-title">Qorrect Assessment</div>
+            <div class="project-stack">C#, .Net Core, ASP.Net WebApis, ASP.Net MVC, SqlServer, Postgres, Redis, IdentityServer4, Hangfire</div>
+            <p style="margin-top:10px;color:var(--muted)">Smart assessment product which manages examinations for both examiners & examinees; web, tablet & mobile.</p>
+          </div>
+
+          <div class="project-card reveal">
+            <div class="project-title">Marking System</div>
+            <div class="project-stack">C#, .Net Core, ASP.Net WebApis, SqlServer, Postgres, Redis, JWT</div>
+            <p style="margin-top:10px;color:var(--muted)">Collaborative marking platform for efficient marking assignment and review.</p>
+          </div>
+
+          <div class="project-card reveal">
+            <div class="project-title">Key2Learn</div>
+            <div class="project-stack">C#.Net, ASP.Net MVC Core, MongoDB</div>
+            <p style="margin-top:10px;color:var(--muted)">Learning management system for schools and teachers to manage courses & meetings.</p>
+          </div>
+        </div>
       </div>
-
-      <div class="item">
-        <h4>Marking System</h4>
-        <div class="meta">C#, .Net Core, ASP.Net WebApis, SqlServer, Postgres, Redis, JWT</div>
-        <p class="dense">A product to facilitae the examinees answers marking in an easy and collaborative way while the
-          marking tasks are assigned randomly or manually to the markers.</p>
-      </div>
-
-      <div class="item">
-        <h4>Key2Learn</h4>
-        <div class="meta">C#.Net, ASP.Net MVC Core, MongoDB</div>
-        <p class="dense">Learning management system (LMS) which manages schools, teachers, students, and parents. It
-          allows teachers to create and assign couses, meeting, and materials for their students.</p>
-      </div>
-
-      <div class="item">
-        <h4>Future Leaders</h4>
-        <div class="meta">C#.Net, ASP.Net MVC, WCF Services, Sql Server</div>
-        <p class="dense">Educational web application which allows the ministry to choose the most talented graduates or
-          teachers to fullll the available leadership positions</p>
-      </div>
-
-      <div class="item">
-        <h4>Waed</h4>
-        <div class="meta">C#.Net, ASP.Net MVC Core, WCF Services, Sql Server</div>
-        <p class="dense">Educational web application which allows filtering the ministry employees by passing some exams
-          and surveys and also making interviews and trainings based on their skills</p>
-      </div>
-
-      <div class="item">
-        <h4>Safeer Graduates</h4>
-        <div class="meta">C#.Net, ASP.Net MVC, WCF Services, Sql Server</div>
-        <p class="dense">Educational web application that integrates with many WCF services which allows the graduates
-          to publish their CVs and apply for jobs or trainings offered by other registered agencies.</p>
-      </div>
-
-      <div class="item">
-        <h4>Online Banking Webservices</h4>
-        <div class="meta">C#.Net, ASP.Net WebApis, Oracle</div>
-        <p class="dense">Build webservices for integration with internal bank system & exposed to external customers
-          portal</p>
-      </div>
-
-      <div class="item">
-        <h4>iSHRAQ</h4>
-        <div class="meta">C#.Net, ASP.Net WebForms, Oracle</div>
-        <p class="dense">Banking software product for internal & external bank activities management & core banking.</p>
-      </div>
-
-      <div class="item">
-        <h4>EduWave</h4>
-        <div class="meta">C#.Net, Asp.Net WebApis Asp.Net WebForms, Sql Server</div>
-        <p class="dense">Large e-learning system for all study levels which helps students and teachers communication &
-          cover many schools in the Gulf</p>
-      </div>
-
-      <div class="item">
-        <h4>GAZT</h4>
-        <div class="meta">C#.Net, Asp.Net WebApis, Sql Server, Angular 1.x, Active Directory, SAP, CRM.</div>
-        <p class="dense">Inspection for agencies that have not paid their VAT or Excise Taxes to detect violations and
-          set penalities on their owners & integrate with active directory and other external services (SAP, CRM).</p>
-      </div>
-
-      <div class="item">
-        <h4>MOT</h4>
-        <div class="meta">C#.Net, Asp.Net WebApis, Sql Server, Angular 1.x</div>
-        <p class="dense">Tracking and reporting accidents or violations in roads.</p>
-      </div>
-
-      <div class="item">
-        <h4>Onaizah Municipality</h4>
-        <div class="meta">C#.Net, Asp.Net WebApis, Sql Server, Oracle, Angular 1.x Active Directory.</div>
-        <p class="dense">Inspection for all shops in Onaizah to check violations and set penalities on their owners &
-          sync with oracle db & integrate with active directory.</p>
-      </div>
-
-      <div class="item">
-        <h4>MLSD</h4>
-        <div class="meta">C#.Net, Asp.Net WebApis, Sql Server, Oracle, SSIS, Angular 1.x.</div>
-        <p class="dense">Inspection for poor people who need help or money & sync with ministry oracle db.</p>
-      </div>
-
-      <div class="item">
-        <h4>GAMEP</h4>
-        <div class="meta">C#.Net, Asp.Net WebApis, Sql Server, Angular 1.x..</div>
-        <p class="dense">Inspection for buildings, factories, or agencies which have environmental violations & go
-          through approval & revision workow</p>
-      </div>
-
-      <div class="item">
-        <h4>MOF</h4>
-        <div class="meta">C#.Net, Asp.Net WebApis, Sql Server, Angular 1.x</div>
-        <p class="dense">Provides news related to the ministry & integrate with mobile app.</p>
-      </div>
-
-      <div class="item">
-        <h4>BRAVO Product</h4>
-        <div class="meta">C#.Net, Asp.Net WebApis, Sql Server, Angular 1.x</div>
-        <p class="dense">Generic field inspection product with dynamic form builder, form viewer (web & mobile), workow,
-          and task distribution.</p>
-      </div>
-
-      <div class="item">
-        <h4>http://www.royalceramica.com</h4>
-        <div class="meta">C#.Net, Asp.Net MVC, Sql Server, Orchard CMS</div>
-        <p class="dense">Ceramica Royal company ofcial website.</p>
-      </div>
-
-      <div class="item">
-        <h4>http://www.egysurvey.com</h4>
-        <div class="meta">C#.Net, ASP.Net Webforms, Sql Server</div>
-        <p class="dense">Design simple & professional surveys with different templates.</p>
-      </div>
-
-      <div class="item">
-        <h4>http://www.rakeeb.net</h4>
-        <div class="meta">C#.Net, ASP.Net Webforms, Sql Server, Charts, Windows Services</div>
-        <p class="dense">Egypt Elections Supervision, News, Results, Statistics and Maps.</p>
-      </div>
-
-      <div class="item">
-        <h4>http://www.emta7anat.com</h4>
-        <div class="meta">C#.Net, ASP.Net Webforms, Sql Server</div>
-        <p class="dense">Exams online for students, teachers, and schools.</p>
-      </div>
-
-      <div class="item">
-        <h4>http://www.reservegypt.com</h4>
-        <div class="meta">C#.Net, ASP.Net Webforms, Sql Server</div>
-        <p class="dense">Hotels Reservation system for Egypt and other services.</p>
-      </div>
-
-      <div class="item">
-        <h4>http://www.eiod.org</h4>
-        <div class="meta">C#.Net, ASP.Net Webforms, Sql Server</div>
-        <p class="dense">Egyptian Institute of Directors.</p>
-      </div>
-
-      <div class="item">
-        <h4>http://www.ecrc.org.eg</h4>
-        <div class="meta">C#.Net, ASP.Net Webforms, Sql Server</div>
-        <p class="dense">Egyptian Corporate Responsibility Center.</p>
-      </div>
-
-      <div class="item">
-        <h4>http://www.followmycars.com</h4>
-        <div class="meta">C#.Net, ASP.Net Webforms</div>
-        <p class="dense">Marketing website for tracking cars through GPS tools.</p>
-      </div>
-
-      <div class="item">
-        <h4>http://www.acs-egypt.com</h4>
-        <div class="meta">C#.Net, ASP.Net Webforms, Sql Server</div>
-        <p class="dense">Management system for ACS Company.</p>
-      </div>
-
-      <div class="item">
-        <h4>Gait Analysis for Human Identication</h4>
-        <div class="meta">C#.Net, OpenCV, Sql Server</div>
-        <p class="dense">Graduation Project which aims to identify the individuals by their gait (i.e. the manner they
-          walk) from a video sequence. Won ITIDA prize</p>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="card">
-      <h2>TECHNICAL SKILLS</h2>
-      <p class="dense">
-        C#.Net | VB.Net | ASP.Net (WebForms, MVC, WebApis) | ASP.Net MVC Core | .Net Core | Entity Framework | EF Core |
-        Design Patterns | OOP | SOLID Principles | IdentityServer | Hangfire | Redis | AngularJS | Angular 2+ |
-        KnockoutJs | HTML | CSS | Bootstrap | JavaScript | jQuery | AJAX | JSON | XML | WCF | MongoDB (Query,
-        Aggregation, Performance) | SQL Server | SSIS | Oracle | MS Access | Postgres | Crystal Reports | iReport | SSRS
-        | Cloud (Amazon, Azure) | Git | TFVS | JIRA | Agile | Scrum | SignalR | WebSockets | Basics in (SharePoint,
-        Orchard CMS, Ionic Framework, Android, WordPress, Joomla, C++, JAVA, Win 8 Apps).
-      </p>
-    </section>
-
-    <!-- EDUCATION -->
-    <section id="education" class="card">
-      <h2>EDUCATION</h2>
-      <div class="item">
-        <span style="font-weight:500">Faculty of Computer & Information Sciences</span> - Ainshams University<br>
-        <span class="meta">2005 - 2009</span>
-      </div>
-      <div class="item">
-        <span style="font-weight:500">Thanawia Amma</span> - Mubarak Secondary<br>
-        <span class="meta">2002 - 2005</span>
-      </div>
-    </section>
-
-    <!-- COURSES -->
-    <section id="courses" class="card">
-      <h2>COURSES</h2>
-      <ul class="dense-list dense">
-        <li>Project Management - PMP Preparation | net3lem.com</li>
-        <li>Agile Frameworks Webinar | net3lem.com</li>
-        <li>EF Core 6 Fundamentals | Pluralsight</li>
-        <li>Microservices Architecture in Arabic | Youtube</li>
-        <li>Microservices Architecture and Design | Youtube</li>
-        <li>Saga pattern: distributed transactions | Youtube</li>
-        <li>Introduction to Microservices - DotnetMastery | Youtube</li>
-        <li>SOLID Principles for C# Developers | Pluralsight</li>
-        <li>Top 1%: Software Architecture Series | Pluralsight</li>
-        <li>سلسلة سكروم باللغة العربية | Youtube</li>
-        <li>[Arabic - بالعربي] Entity Framework Core | Youtube</li>
-        <li>Microservices: The Big Picture | Pluralsight</li>
-        <li>ASP.NET Core Microservices: Getting Started | Pluralsight</li>
-        <li>Simplified .Net Background Tasks with Hangfire 1 | Pluralsight</li>
-        <li>Clean Architecture: Patterns, Practices, and Principles | Pluralsight</li>
-        <li>Get Started With .Net Core Identity Server 4 | Udemy</li>
-        <li>Learn Amazon web services (AWS): The complete introduction | Udemy</li>
-        <li>MongoDB Basics | MongoDB University</li>
-        <li>MongoDB Aggregation Framework | MongoDB University</li>
-        <li>MongoDB Performance | MongoDB University</li>
-        <li>MongoDB for Python Developers | MongoDB University</li>
-        <li>Angular 9 - The Complete Guide 2020 Edition | Udemy</li>
-        <li>Leadership Skills | E3melBusiness Academy</li>
-        <li>Professional CEO | E3melBusiness Academy </li>
-        <li>Modern Software Architecture | SECC-ITIDA</li>
-        <li>SECC Agile Foundation | SECC-ITIDA</li>
-        <li>Mastering the Basics of SQL Server Query Optimization | Udemy</li>
-        <li>Mini MBA | Smart Vision</li>
-        <li>Developing Microsoft SharePoint Server 2013 Core Solutions | New Horizons</li>
-        <li>Android Application Development | Asgatech</li>
-        <li>Cloud Business Essentials | ITSynergy </li>
-        <li>Code Refactoring Techniques | SECC-ITIDA</li>
-        <li>Test Driven Development | SECC-ITIDA</li>
-        <li>Berlitz Prociency Level 1 (English Course) | Berlitz</li>
-      </ul>
-    </section>
-
-    <!-- CERTIFICATES -->
-    <section id="certificates" class="card">
-      <h2>CERTIFICATES</h2>
-      <ul class="dense-list dense">
-        <li>SECC Agile Foundation — SECC | May 2018</li>
-        <li>CCC Cloud Business Associate — TIEC | February 2014</li>
-      </ul>
-    </section>
-
-    <!-- PERSONAL SKILLS -->
-    <section id="personal1" class="card">
-      <h2>PERSONAL SKILLS</h2>
-      <ul class="dense-list dense">
-        <li>Great Leader & Manager</li>
-        <li>Committed</li>
-        <li>Analytical</li>
-        <li>Love Thinking</li>
-        <li>Cooperative</li>
-        <li>Hard Worker</li>
-        <li>Well Organized</li>
-        <li>Team Player</li>
-      </ul>
-    </section>
-
-    <!-- PERSONAL INFORMATION -->
-    <section id="personal2" class="card">
-      <h2>PERSONAL INFORMATION</h2>
-
-      <ul class="dense-list dense">
-        <li><span style="font-weight:500">Address:</span> Cairo, Egypt</li>
-        <li><span style="font-weight:500">Marital Status:</span> Married</li>
-        <li><span style="font-weight:500">Military Status:</span> Excempted</li>
-        <li><span style="font-weight:500">Languages:</span> Arabic (Native) | English (Excellent)</li>
-      </ul>
-
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="card">
-      <h2>CONTACT</h2>
-      <p class="dense">
-        I'm always open to new opportunities, collaborations, or conversations about technology, leadership, and
-        innovation.
-        <br>
-        You can easily reach me through any of the following:
-      </p>
+    <section id="contact" class="site-section reveal" aria-labelledby="contactTitle" data-section hidden>
+      <div class="container">
+        <div class="section-head">
+          <div class="section-title" id="contactTitle">Contact</div>
+          <div class="section-sub">Open to opportunities, consulting & speaking</div>
+        </div>
 
-      <div class="contact-links">
-        <a href="mailto:goldencap2009@gmail.com" class="contact-item" target="_blank">
-          <span class="icon">📧</span>
-          <span class="label">Email</span>
-          <span class="value">goldencap2009@gmail.com</span>
-        </a>
+        <div class="contact-grid">
+          <div class="contact-card reveal">
+            <h3 style="margin:0">Reach out directly</h3>
+            <p class="text-muted" style="margin-top:8px">Email, LinkedIn, or GitHub — I’m open to discussing new roles, collaborations, and technical leadership engagements.</p>
+            <ul style="margin-top:12px;color:var(--muted);font-weight:700">
+              <li>Email: <a href="mailto:goldencap2009@gmail.com">goldencap2009@gmail.com</a></li>
+              <li>LinkedIn: <a href="https://www.linkedin.com/in/salah-emam" target="_blank" rel="noopener">linkedin.com/in/salah-emam</a></li>
+              <li>GitHub: <a href="https://salahemam.github.io/" target="_blank" rel="noopener">salahemam.github.io</a></li>
+            </ul>
+          </div>
 
-        <a href="https://www.linkedin.com/in/salah-emam" class="contact-item" target="_blank" rel="noopener">
-          <span class="icon">🔗</span>
-          <span class="label">LinkedIn</span>
-          <span class="value">linkedin.com/in/salah-emam</span>
-        </a>
+          <form class="contact-card contact-form reveal" onsubmit="handleContact(event)">
+            <label for="name">Name</label>
+            <input id="name" name="name" required />
 
-        <a href="https://salahemam.github.io/" class="contact-item" target="_blank" rel="noopener">
-          <span class="icon">💻</span>
-          <span class="label">GitHub</span>
-          <span class="value">salahemam.github.io</span>
-        </a>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+
+            <label for="msg">Message</label>
+            <textarea id="msg" name="message" rows="5" required></textarea>
+
+            <div style="display:flex;gap:10px;align-items:center">
+              <button class="btn btn-primary" type="submit">Send message</button>
+              <div style="color:var(--muted);font-size:13px">This is a demo form — it opens your email client.</div>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
-
-    <footer class="card footer-card">
-      <div>© <span id="year"></span> Salah Eldin Emam — All rights reserved</div>
-      <div><span style="font-size:10px">Last updated at 13-10-2025</span></div>
-    </footer>
   </main>
 
-  <script src="script.js"></script>
-</body>
+  <footer class="site-footer">
+    <div class="container">
+      <div style="max-width:900px;margin:0 auto;color:var(--muted);font-size:13px">
+        © 2025 Salah Eldin Emam — All rights reserved · Built with ❤️ · <a href="cv.html" style="display:none">CV</a>
+      </div>
+    </div>
+  </footer>
 
+  <script>
+  /***** THEME TOGGLE (persist) *****/
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+
+  function applyTheme(theme){
+    if(theme === 'dark') document.documentElement.classList.add('dark'), document.body.classList.add('dark');
+    else document.documentElement.classList.remove('dark'), document.body.classList.remove('dark');
+    localStorage.setItem('site-theme', theme);
+    themeToggle.setAttribute('aria-pressed', theme === 'dark');
+    // icon swap (simple)
+    themeIcon.innerHTML = theme === 'dark'
+      ? '<path d=\"M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z\" />' // moon
+      : '<path d=\"M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />'; // sun-ish
+  }
+
+  (function initTheme(){
+    const saved = localStorage.getItem('site-theme');
+    if(saved) applyTheme(saved);
+    else {
+      const prefers = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(prefers ? 'dark' : 'light');
+    }
+  })();
+
+  themeToggle.addEventListener('click', e => {
+    const isDark = document.body.classList.contains('dark');
+    applyTheme(isDark ? 'light' : 'dark');
+  });
+
+  /***** MOBILE MENU *****/
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileDrawer = document.getElementById('mobileDrawer');
+  menuToggle.addEventListener('click', () => {
+    const open = mobileDrawer.style.display === 'flex';
+    mobileDrawer.style.display = open ? 'none' : 'flex';
+    menuToggle.setAttribute('aria-expanded', !open);
+    mobileDrawer.setAttribute('aria-hidden', open);
+  });
+
+  // close on click outside
+  document.addEventListener('click', (e) => {
+    if(!menuToggle.contains(e.target) && !mobileDrawer.contains(e.target)) {
+      mobileDrawer.style.display = 'none';
+      menuToggle.setAttribute('aria-expanded', false);
+      mobileDrawer.setAttribute('aria-hidden', true);
+    }
+  });
+
+  /***** SECTION NAV & SHOW/HIDE (single page hiding) *****/
+  const sections = document.querySelectorAll('[data-section]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  function showSection(id){
+    sections.forEach(s => {
+      if(s.id === id) { s.hidden = false; s.classList.add('visible'); s.scrollIntoView({behavior:'smooth'}); }
+      else s.hidden = true;
+    });
+    navLinks.forEach(a => a.classList.toggle('active', a.dataset.target === id));
+  }
+
+  // initial show home
+  showSection('home');
+
+  // nav click handlers
+  document.querySelectorAll('[data-target]').forEach(el => {
+    el.addEventListener('click', (ev) => {
+      ev.preventDefault();
+      const id = el.getAttribute('data-target');
+      showSection(id);
+      // close mobile drawer if open
+      mobileDrawer.style.display = 'none';
+      menuToggle.setAttribute('aria-expanded', false);
+    });
+  });
+
+  // support deep links (#resume etc)
+  if(location.hash){
+    const h = location.hash.replace('#','');
+    if(['home','resume','projects','contact'].includes(h)) showSection(h);
+  }
+
+  /***** ACCORDION BEHAVIOR *****/
+  document.querySelectorAll('[data-acc]').forEach(head => {
+    head.addEventListener('click', () => {
+      const body = head.nextElementSibling;
+      const open = body.classList.contains('open');
+      // close all bodies
+      document.querySelectorAll('.acc-body').forEach(b => {
+        b.style.maxHeight = null;
+        b.classList.remove('open');
+      });
+      if(!open){
+        body.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Expand SUMMARY by default
+  document.addEventListener('DOMContentLoaded', () => {
+    const firstBody = document.querySelector('.accordion-summary .acc-body');
+    if(firstBody){ firstBody.classList.add('open'); firstBody.style.maxHeight = firstBody.scrollHeight + 'px'; }
+  });
+
+  /***** REVEAL ON SCROLL (slide-up) *****/
+  const revealed = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12});
+
+  revealed.forEach(r => io.observe(r));
+
+  /***** CONTACT FORM HANDLER (demo) *****/
+  function handleContact(e){
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name?.value || form.querySelector('#name')?.value || 'there';
+    const email = form.email?.value || form.querySelector('#email')?.value || '';
+    const msg = form.message?.value || form.querySelector('#msg')?.value || form.querySelector('#msg')?.value || '';
+    // For demo: open mail client
+    const mailto = `mailto:goldencap2009@gmail.com?subject=${encodeURIComponent('Website message from '+name)}&body=${encodeURIComponent(msg+'\n\nFrom: '+name+' ('+email+')')}`;
+    window.location.href = mailto;
+  }
+  window.handleContact = handleContact;
+  </script>
+</body>
 </html>

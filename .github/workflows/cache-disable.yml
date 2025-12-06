@@ -1,0 +1,11 @@
+name: Disable Cache
+on: [push]
+
+jobs:
+  disable-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Add no-cache headers
+        run: |
+          echo '<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />' >> index.html
